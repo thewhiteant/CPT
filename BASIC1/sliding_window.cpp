@@ -25,6 +25,7 @@ int main()
             //    p.insert(arr[i]);  
             // }
             cout << p.find(arr[i]) == p.end()<<endl;
+
         }
 
         reverse(ans.begin(),ans.end());
