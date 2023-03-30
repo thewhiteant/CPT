@@ -23,7 +23,7 @@ int main(){
         }
     }
 
-    cout<<setprecision(10)<<l<<endl;
+    cout<<l<<endl;
 
     return 0;
-}
+} 
