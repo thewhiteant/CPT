@@ -11,7 +11,7 @@ int sliding_window(int arr[],int n,int k){
         {
             currnet_SUM += arr[i+j];
         }
-    max_sum = max(max_sum,currnet_SUM);
+        max_sum = max(max_sum,currnet_SUM);
     }
     
     return max_sum;

@@ -1,24 +1,33 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<algorithm>
+#include<vector>
 using namespace std;
+
+
+
+
+void countFreq(int arr[],int n){
+        sort(arr,arr+n);
+        for (int i = 0; i < n; i++)
+        {
+
+        
+        int f_indx = lower_bound(arr,arr+n,arr[i])-arr;
+        int s_index = upper_bound(arr,arr+n,arr[i])-arr-1;
+        i = s_index;
+
+        int frequency_items = s_index-f_indx+1;
+        cout<<arr[i]<<" = "<<frequency_items<<endl;
+
+
+        }
+}
 
 int main(){
 
-    //Count frequency table
-    vector<int> chk = {1,2,2,3,3,4,4,5,5,5,5,6,6,6};
-    vector<int>  lb, up;
-
-    // for (int i = 0; i < (int)chk.size(); i++)
-    // {
-             lb = lower_bound(chk.begin(),chk.end(),2)-chk.end();
-             up = upper_bound(chk.begin(),chk.end(),2)-chk.end();giyf
-
-                cout<<lb<<" "<<up<<endl; 
-    // }
-    
-
-    
-
-
+    int arr[20] = {1,1,2,2,2,2,3,3,3,4,4,4,56,6,6,6,56};
+    int n = 17;
+    countFreq(arr,17);
 
     return 0;
 }
