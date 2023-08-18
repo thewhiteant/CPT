@@ -1,17 +1,41 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
+vector<int> graph[100];
+int visited[100];
 
-int main(){
+void dfs(int x)
+{
+    visited[x] = 1;
+    cout << x << " ";
+    for (int a : graph[x])
+    {
+        if (!visited[a])
+            dfs(a);
+    }
+}
 
+void addEdge(int x, int y)
+{
+    graph[x].push_back(y);
+}
 
-    int aarr[] = {1,2,3,4,5,6,7,8,9,11};
-    auto s = lower_bound(aarr,aarr+10,9);
-    auto p = upper_bound(aarr,aarr+10,9);
-    cout<<s-aarr<<endl;
-    cout<<p-aarr<<endl;
-           
+int main()
+{
 
+    addEdge(10, 25);
+    addEdge(25, 30);
+    addEdge(30, 25);
+    addEdge(25, 30);
+    addEdge(10, 25);
+    addEdge(25, 30);
+    addEdge(10, 25);
+    addEdge(25, 30);
+    addEdge(10, 25);
+    addEdge(25, 30);
+    addEdge(10, 25);
+    addEdge(25, 30);
+
+    dfs(10);
 
     return 0;
 }
