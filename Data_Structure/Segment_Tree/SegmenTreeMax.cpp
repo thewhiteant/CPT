@@ -1,69 +1,42 @@
 #include <iostream>
 using namespace std;
 
-
-//res - tree array
-// left right range
-//int array er index
-//postion tree er upre theka index ja alws sataring e 1 hobe
-//Segment Tree builld up here
-void buildTree(int arr[],int res[],int left,int right,int index,int position){
-    //For Single Unit Segment Only
-    if(left==index && right == index){
-            res[position] = arr[index];
-            return;
+void buildTree(int arr[], int res[], int left, int right, int position) {
+    if (left == right) {
+        res[position] = arr[left];
+        return;
     }
-    int mid = (left+right)/2;
+    int mid = (left + right) / 2;
 
-    if(index<=mid){
-        buildTree(arr,res,left,mid,index,position*2);
-    }else{
-         buildTree(arr,res,mid+1,right,index,(position*2)+1);
-    }
+    buildTree(arr, res, left, mid, position * 2);
+    buildTree(arr, res, mid + 1, right, (position * 2) + 1);
 
-    //Sum both side of segments for 
-    res[position] = max(res[position*2],  res[(position*2)+1]);
-
+    res[position] = min(res[position * 2], res[(position * 2) + 1]);
 }
 
-//use segment tree for Range Qurey
-int RQ_sum(int arr[], int res[], int left, int right, int SR, int ER, int position) {
+int RMQ_min(int res[], int left, int right, int SR, int ER, int position) {
     if (right < SR || ER < left)
-        return 0;
+        return INT_MAX;
     if (SR <= left && ER >= right) {
         return res[position];
     }
 
     int mid = (left + right) / 2;
-    int leftS = RQ_sum(arr, res, left, mid, SR, ER, position * 2);
-    int RightS = RQ_sum(arr, res, mid + 1, right, SR, ER, (position * 2) + 1);
+    int leftMin = RMQ_min(res, left, mid, SR, ER, position * 2);
+    int rightMin = RMQ_min(res, mid + 1, right, SR, ER, (position * 2) + 1);
 
-    return leftS + RightS;
+    return min(leftMin, rightMin);
 }
 
-
-
-
-
-int main()
-{
+int main() {
     int n = 10;
-    int arr[n] = {2,1,4,5,3,6,3,6,5,9};
-    
+    int arr[n] = {2, 1, 4, 5, 3, 6, 3, 6, 5, 9};
 
-//Tree olding array
-    int res[4*n]={0};
+    int res[4 * n] = {0};
 
-    for (int i = 0; i <n; i++)
-    {
-        buildTree(arr,res,0,n-1,i,1);
-    }
-  
-    // for (int i = 0; i <4*n; i++)
-    // {
-    //   cout<<res[i]<<" ";
-    // }
-    cout<<RQ_sum(arr,res,0,n-1,8,9,1)<<endl;
+    buildTree(arr, res, 0, n - 1, 1);
 
-     return 0;
+    cout << "Minimum value in range  " << RMQ_min(res, 0, n - 1, 0, 9, 1) << endl;
+
+    return 0;
 }

@@ -42,13 +42,33 @@ int RQ_sum(int arr[], int res[], int left, int right, int SR, int ER, int positi
 }
 
 
+void UpdateTree(int res[],int left,int right,int index,int position,int value){
+    //For Single Unit Segment Only
+    if(left==index && right == index){
+            res[position] = value;
+            return;
+    }
+    int mid = (left+right)/2;
+
+    if(index<=mid){
+        UpdateTree(res,left,mid,index,position*2,value);
+    }else{
+         UpdateTree(res,mid+1,right,index,(position*2)+1,value);
+    }
+
+    //Sum both side of segments for 
+    res[position] = res[position*2] + res[(position*2)+1];
+
+}
+
+
 
 
 
 int main()
 {
     int n = 10;
-    int arr[n] = {2,1,4,5,3,6,3,6,5,9};
+    int arr[n] = {1,2,3,4};
     
 
 //Tree olding array
@@ -59,11 +79,15 @@ int main()
         buildTree(arr,res,0,n-1,i,1);
     }
   
+
+    UpdateTree(res,0,n-1,3,1,10);
     // for (int i = 0; i <4*n; i++)
     // {
     //   cout<<res[i]<<" ";
     // }
-    cout<<RQ_sum(arr,res,0,n-1,8,9,1)<<endl;
+
+    cout<<RQ_sum(arr,res,0,n-1,1,3,1)<<endl;
+
 
      return 0;
 }
