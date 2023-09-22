@@ -7,24 +7,6 @@ using namespace std;
 //int array er index
 //postion tree er upre theka index ja alws sataring e 1 hobe
 //Segment Tree builld up here
-void buildTree(int arr[],int res[],int left,int right,int index,int position){
-    //For Single Unit Segment Only
-    if(left==index && right == index){
-            res[position] = arr[index];
-            return;
-    }
-    int mid = (left+right)/2;
-
-    if(index<=mid){
-        buildTree(arr,res,left,mid,index,position*2);
-    }else{
-         buildTree(arr,res,mid+1,right,index,(position*2)+1);
-    }
-
-    //Sum both side of segments for 
-    res[position] = res[position*2] + res[(position*2)+1];
-
-}
 
 //use segment tree for Range Qurey
 int RQ_sum(int arr[], int res[], int left, int right, int SR, int ER, int position) {
@@ -68,7 +50,7 @@ void UpdateTree(int res[],int left,int right,int index,int position,int value){
 int main()
 {
     int n = 10;
-    int arr[n] = {1,2,3,4};
+    int arr[n] = {10,2,3,4,5,3,5,2,5,1};
     
 
 //Tree olding array
@@ -79,14 +61,18 @@ int main()
         buildTree(arr,res,0,n-1,i,1);
     }
   
+  for (int i = 0; i < n*4; i++)
+  {
+    cout<<res[i]<<" ";
+  }
+  
+    // UpdateTree(res,0,n-1,3,1,10);
+    // // for (int i = 0; i <4*n; i++)
+    // // {
+    // //   cout<<res[i]<<" ";
+    // // }
 
-    UpdateTree(res,0,n-1,3,1,10);
-    // for (int i = 0; i <4*n; i++)
-    // {
-    //   cout<<res[i]<<" ";
-    // }
-
-    cout<<RQ_sum(arr,res,0,n-1,1,3,1)<<endl;
+    // cout<<RQ_sum(arr,res,0,n-1,1,3,1)<<endl;
 
 
      return 0;
