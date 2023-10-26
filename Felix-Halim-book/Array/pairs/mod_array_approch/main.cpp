@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
+//Drawback cant use higher values then n
+
 vector<int> duplicates(int arr[], int n)
 {
 
