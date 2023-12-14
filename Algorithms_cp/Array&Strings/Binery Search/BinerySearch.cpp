@@ -13,6 +13,7 @@ int main(){
     
     int find;
     cin>>find;
+    
     int lo = 0; 
     int hi = n-1;
     int mid;
