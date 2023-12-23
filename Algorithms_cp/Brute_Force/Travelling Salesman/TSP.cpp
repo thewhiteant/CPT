@@ -40,22 +40,16 @@ void TSP(int arr[v][v],int start){
     
     TSP(arr,VRTX);
 
-
     
 }
 
 
 int main(){
-
-
-        
+       
 
         for(int i =0;i<v;i++){
             visited[i] = false;
         }
-
-
-
 
 
 
@@ -74,8 +68,6 @@ int tsp_g[v][v] = {
         for(int i = 0;i<v;i++){
             cout<<result[i]<<" ";
         }
-
-
 
 
 return 0;
