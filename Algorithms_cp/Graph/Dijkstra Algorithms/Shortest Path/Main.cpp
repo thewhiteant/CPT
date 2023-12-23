@@ -49,7 +49,7 @@ void Dijkstra(int Graph[Vertices][Vertices], int starting){
         }
 
     }
-    
+
 
     for(int i = 0;i<Vertices;i++){
         cout<<Output_Array[i]<<" ";
@@ -69,7 +69,6 @@ int G[Vertices][Vertices] = {
     {9,0,1,0,0,2},
     {0,7,3,0,2,0}
 };
-
 
 Dijkstra(G,0);
 
