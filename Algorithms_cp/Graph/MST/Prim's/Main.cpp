@@ -2,7 +2,7 @@
 #define  v 5
 using namespace std;
 
-int output[v];
+
 
 int PQ(int arr[v], bool visited[v]){
     int Mn = INT_MAX;
@@ -23,12 +23,13 @@ void prims(int arr[v][v],int sr){
   
     int store[v];
     bool visited[v];
+    int output[v];
 
     for(int i=0;i<v;i++){
         visited[i] = false;
         store[i] = INT_MAX;
     }
-
+    
     store[sr] = 0;
     output[sr] = -1;
     
@@ -50,23 +51,21 @@ void prims(int arr[v][v],int sr){
     }
 
 
-    for(int i =0;i<v;i++){
-        cout<<output[i]<<" ";
+    for(int i =1 ;i<v;i++){
+        cout<<output[i]<<"-"<<i<<"\t"<<arr[i][output[i]]<<endl;
     }    
 }
 
 
 int main(){
 
-    int grph[v][v] = {
-        {0,6,0,0,3},
-        {6,0,4,0,3},
-        {0,4,0,0,0},
-        {0,0,0,0,0},
-        {3,5,0,0,0}
-    };
-    
-    prims(grph,0);
+int graph[v][v] = { { 0, 2, 0, 6, 0 },
+                        { 2, 0, 3, 8, 5 },
+                        { 0, 3, 0, 0, 7 },
+                        { 6, 8, 0, 0, 9 },
+                        { 0, 5, 7, 9, 0 } t
+                };
+prims(graph,0);
 
     return 0;
 }

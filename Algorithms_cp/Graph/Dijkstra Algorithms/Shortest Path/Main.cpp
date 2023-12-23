@@ -52,7 +52,7 @@ void Dijkstra(int Graph[Vertices][Vertices], int starting){
 
 
     for(int i = 0;i<Vertices;i++){
-        cout<<Output_Array[i]<<" ";
+        cout<<"0 to "<<i<<" distance :" <<Output_Array[i]<<endl;
     }
 
 }
