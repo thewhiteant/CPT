@@ -51,9 +51,11 @@ void prims(int arr[v][v],int sr){
     }
 
 
-    for(int i =1 ;i<v;i++){
-        cout<<output[i]<<"-"<<i<<"\t"<<arr[i][output[i]]<<endl;
-    }    
+    cout <<"SHortest paths :";
+    for(int i =0;i<v;i++)
+    cout<<store[i]<<" ";
+    
+
 }
 
 
@@ -63,7 +65,7 @@ int graph[v][v] = { { 0, 2, 0, 6, 0 },
                         { 2, 0, 3, 8, 5 },
                         { 0, 3, 0, 0, 7 },
                         { 6, 8, 0, 0, 9 },
-                        { 0, 5, 7, 9, 0 } t
+                        { 0, 5, 7, 9, 0 } 
                 };
 prims(graph,0);
 
