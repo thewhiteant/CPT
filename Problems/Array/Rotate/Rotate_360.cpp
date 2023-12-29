@@ -5,19 +5,13 @@ using namespace std;
   
 
     void rot(int arr[],int n,int d){
-
-        vector<int> tem;
-        for(int i = d; i < n;i++) {
-            tem.push_back(arr[i]);
+        for(int l = 0;l<d;l++){
+        int k = arr[0];
+        for(int i = 0;i<n;i++){
+            arr[i] = arr[i+1];
         }
-        
-        for(int k = 0;k<d;k++){
-                tem.push_back(arr[k]);
-        }
-
-       for(int i =0;i<n;i++){
-        arr[i] = tem[i];
-       }
+        arr[n-1] = k;
+    }
     }
 
 
