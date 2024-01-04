@@ -1,9 +1,3 @@
-/*
-Todo
-2. Build Sparse Table
-3. Range Query answer
-4. Input - output checking
-*/
 #include <bits/stdc++.h>
 using namespace std;
 
