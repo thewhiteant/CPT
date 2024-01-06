@@ -29,11 +29,12 @@ int main()
 
     for (int i = 1; i <= 7; i++)
     {
-        for (int j = 0; j + pow(2, i) <= maxSize; j++)
+        for (int j = 0; j + (1<<i) <= maxSize; j++)
         {
-            st[i][j] = st[i - 1][j] + st[i - 1][j + (int)pow(2, i - 1)];
+            st[i][j] = st[i - 1][j] + st[i - 1][j + (1<<i-1)];
         }
     }
+
 
     cout << endl
          << endl;
