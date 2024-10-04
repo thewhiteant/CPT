@@ -40,10 +40,7 @@ void Dijkstra(int Graph[Vertices][Vertices], int starting){
         Visited[oldd] = true;
         for(int newd = 0; newd<Vertices; newd++){
 
-            if(!Visited[newd] && 
-            Graph[oldd][newd] &&
-            Output_Array[oldd] != INT_MAX &&
-            Output_Array[oldd] + Graph[oldd][newd] < Output_Array[newd] )
+            if(!Visited[newd] && Graph[oldd][newd] && Output_Array[oldd] != INT_MAX && Output_Array[oldd] + Graph[oldd][newd] < Output_Array[newd] )
             Output_Array[newd] = Output_Array[oldd] + Graph[oldd][newd];                        
 
         }
